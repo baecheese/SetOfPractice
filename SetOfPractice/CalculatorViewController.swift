@@ -10,15 +10,17 @@ import UIKit
 
 struct Calculator {
     
-    let symbolsOfOperation:[String] = ["delete", "/", "x", "-", "+"]
+    let calculatorLabelDefaultText:String = "계산한 식이 나타납니다."
+    let symbolsOfOperation:[String] = ["delete", "AC", "/", "x", "-", "+", "=", "."]//11~
 }
 
 
 class CalculatorViewController: UIViewController {
 
-    let calculatorStrut = Calculator()
+    let calculatorStruct:Calculator = Calculator()
     
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var divisionButton: UIButton!
     @IBOutlet weak var multiplicationButton: UIButton!
     @IBOutlet weak var subtractionButton: UIButton!
@@ -37,20 +39,25 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var eightButton: UIButton!
     @IBOutlet weak var nineButton: UIButton!
     
+    @IBOutlet var calculatingLabel: UILabel!
+    var operationText:String = ""
+    
+    var calculatingNumber:Float = 0.0
+    var resultNumber:Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.settingButtonTag()
+        self.settingButtonText()
         
     }
     
-    
-    /* button 값 setting */
+    /* button tag setting */
     func settingButtonTag() {
         let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
         
-        let operationButtonList:[UIButton] = [deleteButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
+        let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
         
         // numberButton ~ operationButton tag == 1...ButtonTatalCount
         
@@ -74,37 +81,67 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    func settingButtonText() {
+        let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
+        let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
+        
+        for text in 0...numberButtonList.count-1 {
+            numberButtonList[text].setTitle(String(text), forState: .Normal)
+            numberButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
+        }
+        
+        for text in 0...operationButtonList.count-1 {
+            operationButtonList[text].setTitle(calculatorStruct.symbolsOfOperation[text], forState: .Normal)
+            operationButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
+        }
+        
+    }
+    
     @IBAction func numberButtonAction(sender: UIButton) {
         
         if sender.tag == 0 {
             print("🐙")
         }
         
+        changeCalculatingLabel((sender.titleLabel?.text)!)
     }
+    
     
     
     @IBAction func operationAction(sender: UIButton) {
-        
-        if sender.tag == 0 {
-            print("🌙 or ✨")
+        if sender.tag == 12 {
+            self.resetCalculating()
+        }
+        else {
+        // = (result) 는 한 번만 작동 되게 --> 추후 변경 (label에선 되고 있음)
+            if sender.tag == 0 {
+                print("🌙")
+            }
+            else {
+                changeCalculatingLabel((sender.titleLabel?.text)!)
+            }
+        }
+    }
+    
+    
+    func changeCalculatingLabel(newText:String){
+        if calculatingLabel.text == calculatorStruct.calculatorLabelDefaultText {
+            calculatingLabel.text = ""
         }
         
+        calculatingLabel.text = calculatingLabel.text! + newText
+        
     }
+    
+    
+    func resetCalculating() {
+        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
