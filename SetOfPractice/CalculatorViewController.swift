@@ -52,30 +52,41 @@ class CalculatorViewController: UIViewController {
         
         let operationButtonList:[UIButton] = [deleteButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
         
-        // tag default가 0이니, tag를 부여받은 것은 0 이후부터인 것이 맞음
+        // numberButton ~ operationButton tag == 1...ButtonTatalCount
         
-        for number in 0...9 {
-            numberButtonList[number].tag = number
-            print("🌙 \(numberButtonList[number]) tag = \(numberButtonList[number].tag)")
+        var numberButtonListIndex:Int = 0
+        var operationButtonListIndex:Int = 0
+        
+        var startTagNumber:Int = 1
+        var endTagNumber:Int = numberButtonList.count
+        for numberButtonTag in startTagNumber...endTagNumber {
+            numberButtonList[numberButtonListIndex].tag = numberButtonTag
+            print("numberButton tag 세팅 : \(numberButtonList[numberButtonListIndex]) tag = \(numberButtonList[numberButtonListIndex].tag)")
+            numberButtonListIndex += 1
         }
         
-        var count = 0
-        for number in 10...16 {
-            operationButtonList[count].tag = number
-            print("🐙 \(operationButtonList[count]) tag = \(operationButtonList[count].tag)")
-            count += 1
+        startTagNumber = numberButtonList.count+1
+        endTagNumber = startTagNumber+operationButtonList.count-1
+        for operationButtonTag in startTagNumber...endTagNumber {
+            operationButtonList[operationButtonListIndex].tag = operationButtonTag
+            print("operationButton tag 세팅 : \(operationButtonList[operationButtonListIndex]) tag = \(operationButtonList[operationButtonListIndex].tag)")
+            operationButtonListIndex += 1
         }
     }
     
     @IBAction func numberButtonAction(sender: UIButton) {
+        
+        if sender.tag == 0 {
+            print("🐙")
+        }
+        
     }
     
     
     @IBAction func operationAction(sender: UIButton) {
-        //태그 없는 버튼은 기호
         
-        if sender.tag == nil {
-            print("🌙")
+        if sender.tag == 0 {
+            print("🌙 or ✨")
         }
         
     }
