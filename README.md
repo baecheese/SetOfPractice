@@ -1,7 +1,9 @@
 # Set of Practice
+🐈 Make Project of the Basic iOS Applications using Swift.
 
-## Contents
-## 1. Calculator
+## < Contents >
+1. Calculator
+(1) Basic Calculator
 
 ***
 
