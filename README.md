@@ -13,6 +13,8 @@
 
 - Reference document : http://goo.gl/KmFBJu
 
+#### 3. Test code use and study. (ing)
+
 ***
 
 ### 🤖 This project is still in the making..
