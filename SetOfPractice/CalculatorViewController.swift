@@ -106,6 +106,7 @@ class CalculatorViewController: UIViewController {
             print("🐙")
         }
         changeCalculatingLabel((sender.titleLabel?.text)!)
+        changeMainLabel((sender.titleLabel?.text)!)
     }
     
     
@@ -130,11 +131,14 @@ class CalculatorViewController: UIViewController {
     
     // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move calculatingNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move calculatingNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
     
+    
+    
     func startOperation(buttonTage:Int){
         switch buttonTage {
             
             // 연산 기호에 따른 연산  ---- chessing (하는중)
         case 11:
+            // delete / AC / . ---> cheesing
             calculatingNumber += nowNumber
         case 12:
             calculatingNumber += nowNumber
@@ -176,6 +180,12 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    
+    func changeMainLabel(newText:String) {
+        mainLabel.text = mainLabel.text! + newText
+    }
+    
+    // AC 눌렀을 때
     func resetLabelText() {
         calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
     }
