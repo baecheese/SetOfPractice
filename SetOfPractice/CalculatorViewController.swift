@@ -40,9 +40,10 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var nineButton: UIButton!
     
     @IBOutlet var calculatingLabel: UILabel!
-    var operationText:String = ""
+    @IBOutlet var mainLabel: UILabel!
     
     var calculatingNumber:Float = 0.0
+    var nowNumber:Float = 0.0
     var resultNumber:Float = 0.0
     
     override func viewDidLoad() {
@@ -81,6 +82,7 @@ class CalculatorViewController: UIViewController {
         }
     }
     
+    /*button text setting */
     func settingButtonText() {
         let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
         let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
@@ -97,15 +99,14 @@ class CalculatorViewController: UIViewController {
         
     }
     
+    /* button action */
+    
     @IBAction func numberButtonAction(sender: UIButton) {
-        
         if sender.tag == 0 {
             print("🐙")
         }
-        
         changeCalculatingLabel((sender.titleLabel?.text)!)
     }
-    
     
     
     @IBAction func operationAction(sender: UIButton) {
@@ -118,24 +119,74 @@ class CalculatorViewController: UIViewController {
                 print("🌙")
             }
             else {
+                self.startOperation(sender.tag)
                 changeCalculatingLabel((sender.titleLabel?.text)!)
             }
         }
     }
     
+    // ["delete", "AC", "/", "x", "-", "+", "=", "."]
+    //    11       12    13   14   15   16   17  18
+    
+    // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move calculatingNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move calculatingNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
+    
+    func startOperation(buttonTage:Int){
+        switch buttonTage {
+            
+            // 연산 기호에 따른 연산  ---- chessing (하는중)
+        case 11:
+            calculatingNumber += nowNumber
+        case 12:
+            calculatingNumber += nowNumber
+        case 13:
+            calculatingNumber += nowNumber
+        case 14:
+            calculatingNumber += nowNumber
+        case 15:
+            calculatingNumber += nowNumber
+        case 16:
+            calculatingNumber += nowNumber
+            
+        case 17:
+            calculatingNumber -= nowNumber
+        case 18:
+            calculatingNumber += nowNumber
+        default:
+            nowNumber = 0
+        }
+        
+        
+    }
+    
+    /* Label Text change */
     
     func changeCalculatingLabel(newText:String){
         if calculatingLabel.text == calculatorStruct.calculatorLabelDefaultText {
             calculatingLabel.text = ""
         }
-        
         calculatingLabel.text = calculatingLabel.text! + newText
-        
+    }
+    
+    func endCalculate(end:Bool) -> Bool {
+        if end == true {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func resetLabelText() {
+        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
     }
     
     
+    /* operation */
+    
     func resetCalculating() {
-        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
+        
+        
+        self.resetLabelText()
     }
     
 
