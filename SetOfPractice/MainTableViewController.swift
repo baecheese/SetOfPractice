@@ -26,8 +26,8 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Status bar white font
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.black
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
     }
     
@@ -38,28 +38,28 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return mainTableViewData.practiceSection.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return mainTableViewData.practiceLow[section].count
     }
     
     // sectionTitle
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return mainTableViewData.practiceSection[section]
     }
     
     // cell text
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        let cellArray = mainTableViewData.practiceLow[indexPath.section]
-        let cellText:String = cellArray[indexPath.row]
+        let cellArray = mainTableViewData.practiceLow[(indexPath as NSIndexPath).section]
+        let cellText:String = cellArray[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = cellText
         
         return cell
@@ -67,24 +67,24 @@ class MainTableViewController: UITableViewController {
     
     
     // tableview delegate - cell select
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let nextPageArray = mainTableViewData.canMoveNextPage[indexPath.section]
-        let canMoveNextPage:Bool = nextPageArray[indexPath.row]
+        let nextPageArray = mainTableViewData.canMoveNextPage[(indexPath as NSIndexPath).section]
+        let canMoveNextPage:Bool = nextPageArray[(indexPath as NSIndexPath).row]
         
         if canMoveNextPage == true {
             
-            let lowArrayInSection = mainTableViewData.practiceLow[indexPath.section]
-            let lowText:String = lowArrayInSection[indexPath.row]
+            let lowArrayInSection = mainTableViewData.practiceLow[(indexPath as NSIndexPath).section]
+            let lowText:String = lowArrayInSection[(indexPath as NSIndexPath).row]
             
             let nextPageIdentifier:String = (mainTableViewData.nextPageIdentifier[lowText])!
             
-            let secondViewController = self.storyboard!.instantiateViewControllerWithIdentifier(nextPageIdentifier)
+            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: nextPageIdentifier)
             self.navigationController?.pushViewController(secondViewController, animated: true)
         }
         else {
             //선택 해제 애니메이션
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
     

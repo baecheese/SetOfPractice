@@ -42,9 +42,12 @@ class CalculatorViewController: UIViewController {
     @IBOutlet var calculatingLabel: UILabel!
     @IBOutlet var mainLabel: UILabel!
     
-    var calculatingNumber:Float = 0.0
+    var beforeNumber:Float = 0.0
     var nowNumber:Float = 0.0
     var resultNumber:Float = 0.0
+    
+    var isFristNumber:Bool = true
+    var canChangeMainLabelToNewNumber:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +72,7 @@ class CalculatorViewController: UIViewController {
         var endTagNumber:Int = numberButtonList.count
         for numberButtonTag in startTagNumber...endTagNumber {
             numberButtonList[numberButtonListIndex].tag = numberButtonTag
-            print("numberButton tag 세팅 : \(numberButtonList[numberButtonListIndex]) tag = \(numberButtonList[numberButtonListIndex].tag)")
+            //print("numberButton tag 세팅 : \(numberButtonList[numberButtonListIndex]) tag = \(numberButtonList[numberButtonListIndex].tag)")
             numberButtonListIndex += 1
         }
         
@@ -77,7 +80,7 @@ class CalculatorViewController: UIViewController {
         endTagNumber = startTagNumber+operationButtonList.count-1
         for operationButtonTag in startTagNumber...endTagNumber {
             operationButtonList[operationButtonListIndex].tag = operationButtonTag
-            print("operationButton tag 세팅 : \(operationButtonList[operationButtonListIndex]) tag = \(operationButtonList[operationButtonListIndex].tag)")
+            //print("operationButton tag 세팅 : \(operationButtonList[operationButtonListIndex]) tag = \(operationButtonList[operationButtonListIndex].tag)")
             operationButtonListIndex += 1
         }
     }
@@ -88,12 +91,12 @@ class CalculatorViewController: UIViewController {
         let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
         
         for text in 0...numberButtonList.count-1 {
-            numberButtonList[text].setTitle(String(text), forState: .Normal)
+            numberButtonList[text].setTitle(String(text), for: UIControlState())
             numberButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
         }
         
         for text in 0...operationButtonList.count-1 {
-            operationButtonList[text].setTitle(calculatorStruct.symbolsOfOperation[text], forState: .Normal)
+            operationButtonList[text].setTitle(calculatorStruct.symbolsOfOperation[text], for: UIControlState())
             operationButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
         }
         
@@ -101,77 +104,117 @@ class CalculatorViewController: UIViewController {
     
     /* button action */
     
-    @IBAction func numberButtonAction(sender: UIButton) {
+    @IBAction func numberButtonAction(_ sender: UIButton) {
         if sender.tag == 0 {
             print("🐙")
         }
-        changeCalculatingLabel((sender.titleLabel?.text)!)
-        changeMainLabel((sender.titleLabel?.text)!)
+        else {
+        self.changeCalculatingLabel((sender.titleLabel?.text)!)
+        self.changeMainLabel((sender.titleLabel?.text)!)
+        self.settingNowNumber()
+        self.clickOperationButton(false)
+        }
     }
     
     
-    @IBAction func operationAction(sender: UIButton) {
-        if sender.tag == 12 {
-            self.resetCalculating()
+    @IBAction func operationAction(_ sender: UIButton) {
+        print(sender.tag)
+        
+        if sender.tag == 0 {
+            print("🌙")
         }
         else {
-        // = (result) 는 한 번만 작동 되게 --> 추후 변경 (label에선 되고 있음)
-            if sender.tag == 0 {
-                print("🌙")
-            }
-            else {
-                self.startOperation(sender.tag)
-                changeCalculatingLabel((sender.titleLabel?.text)!)
-            }
+            self.clickOperationButton(true)// mainLabel에는 숫자만 나오게 해야해서
+            self.changeCalculatingLabel((sender.titleLabel?.text)!)
+            self.startOperation(sender.tag)
         }
     }
     
     // ["delete", "AC", "/", "x", "-", "+", "=", "."]
     //    11       12    13   14   15   16   17  18
     
-    // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move calculatingNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move calculatingNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
+    // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move beforeNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move beforeNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
     
     
-    
-    func startOperation(buttonTage:Int){
-        switch buttonTage {
-            
-            // 연산 기호에 따른 연산  ---- chessing (하는중)
-        case 11:
-            // delete / AC / . ---> cheesing
-            calculatingNumber += nowNumber
-        case 12:
-            calculatingNumber += nowNumber
-        case 13:
-            calculatingNumber += nowNumber
-        case 14:
-            calculatingNumber += nowNumber
-        case 15:
-            calculatingNumber += nowNumber
-        case 16:
-            calculatingNumber += nowNumber
-            
-        case 17:
-            calculatingNumber -= nowNumber
-        case 18:
-            calculatingNumber += nowNumber
-        default:
+    func startOperation(_ buttonTage:Int){
+        if isFristNumber(isFristNumber) {
+            beforeNumber = nowNumber
             nowNumber = 0
+            
         }
+        else {
         
+            //////////
+            
+            switch buttonTage {
+                
+            // 연산 기호에 따른 연산  ---- chessing (하는중)
+//            case 11:// delete
+//                // delete / AC / . ---> cheesing
+//                print("delete")
+            case 12://
+                self.resetCalculator()
+            case 13:// /
+                // 소숫점 나누기 수정 요망 ---> cheesing
+                beforeNumber = Float(mainLabel.text!)!
+            case 14:// x
+                beforeNumber *= nowNumber
+            case 15:// -
+                beforeNumber -= nowNumber
+            case 16:// +
+                beforeNumber += nowNumber
+            case 17:// =
+                mainLabel.text = String(beforeNumber)
+            case 18:
+                //.button// -- default 다르니 다시 설정
+//                self.changeCalculatingLabel((sender.titleLabel?.text)!)
+//                self.changeMainLabel((sender.titleLabel?.text)!)
+                self.settingNowNumber()
+            default:
+                canChangeMainLabelToNewNumber = true
+                print("beforeNumber - \(beforeNumber)  nowNumber - \(nowNumber)")
+                nowNumber = 0
+            }
+        }
         
     }
     
     /* Label Text change */
     
-    func changeCalculatingLabel(newText:String){
+    func changeCalculatingLabel(_ newText:String){
         if calculatingLabel.text == calculatorStruct.calculatorLabelDefaultText {
             calculatingLabel.text = ""
         }
         calculatingLabel.text = calculatingLabel.text! + newText
     }
     
-    func endCalculate(end:Bool) -> Bool {
+    func changeMainLabel(_ newText:String) {
+        if Int(mainLabel.text!) == 0 {
+            mainLabel.text = newText
+        }
+        else if canChangeMainLabelToNewNumber == true {
+            mainLabel.text = newText
+        }
+        else {
+            mainLabel.text = mainLabel.text! + newText
+        }
+    }
+    
+    
+    
+    // change MainLabel To NewNumber after click OperationButton
+    func clickOperationButton(_ click:Bool) {
+        if click == false {
+            canChangeMainLabelToNewNumber = false
+            print("can not change MainLabelToNewNumber")
+        }
+        else {
+            canChangeMainLabelToNewNumber = true
+            print("can change MainLabelToNewNumber")
+        }
+    }
+    
+    func endCalculate(_ end:Bool) -> Bool {
         if end == true {
             return true
         }
@@ -181,21 +224,38 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    func changeMainLabel(newText:String) {
-        mainLabel.text = mainLabel.text! + newText
+    // AC 눌렀을 때 test change
+    func resetLabelText() {
+        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
+        mainLabel.text = "0"
+    }
+    
+    
+      ///////////////
+     /* operation */
+    ///////////////
+    
+    
+    func settingNowNumber() {
+        nowNumber = Float(mainLabel.text!)!
+    }
+    
+    
+    func isFristNumber(_ isFrist:Bool) -> Bool {
+        if isFrist == true {
+            isFristNumber = false
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     // AC 눌렀을 때
-    func resetLabelText() {
-        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
-    }
-    
-    
-    /* operation */
-    
-    func resetCalculating() {
-        
-        
+    func resetCalculator() {
+        beforeNumber = 0
+        nowNumber = 0
+        isFristNumber = true
         self.resetLabelText()
     }
     

@@ -51,12 +51,12 @@
             </Appearance>
             <String>default setting</String>
         </Note>
-        <Note ID="11" FontSize="16.0" Position="737.859288,436.839186" Width="248.0">
+        <Note ID="11" FontSize="16.0" Position="738.0,437.0" Width="218.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <TextColor>1.0 0.4 0.4</TextColor>
             </Appearance>
-            <String>var calculatingNumber:Float = 0.0</String>
+            <String>var beforeNumber:Float = 0.0</String>
             <ConnectedNoteIDs>14</ConnectedNoteIDs>
         </Note>
         <Note ID="12" FontSize="12.0" Position="81.0,192.0" Width="182.0">
@@ -76,7 +76,7 @@
             <ConnectedNoteIDs>11, 15, 22</ConnectedNoteIDs>
             <PointsToNoteIDs>22</PointsToNoteIDs>
         </Note>
-        <Note ID="15" FontSize="18.0" Position="526.090458,520.0" Width="92.0">
+        <Note ID="15" FontSize="18.0" Position="526.0,520.0" Width="92.0">
             <Appearance>
                 <Alignment>Left</Alignment>
             </Appearance>
@@ -84,7 +84,7 @@
             <ConnectedNoteIDs>14, 17, 19</ConnectedNoteIDs>
             <PointsToNoteIDs>14</PointsToNoteIDs>
         </Note>
-        <Note ID="17" FontSize="16.0" Position="714.733652,523.020102" Width="202.0">
+        <Note ID="17" FontSize="16.0" Position="715.0,523.0" Width="202.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <TextColor>1.0 0.4 0.4</TextColor>
@@ -92,7 +92,7 @@
             <String>var nowNumber:Float = 0.0</String>
             <ConnectedNoteIDs>15</ConnectedNoteIDs>
         </Note>
-        <Note ID="19" FontSize="18.0" Position="540.88944,839.185941" Width="57.0">
+        <Note ID="19" FontSize="18.0" Position="541.0,839.0" Width="57.0">
             <Appearance>
                 <Alignment>Left</Alignment>
             </Appearance>
@@ -100,7 +100,7 @@
             <ConnectedNoteIDs>15</ConnectedNoteIDs>
             <PointsToNoteIDs>15</PointsToNoteIDs>
         </Note>
-        <Note ID="22" FontSize="16.0" Position="722.030153,988.035178" Width="212.0">
+        <Note ID="22" FontSize="16.0" Position="722.0,988.0" Width="212.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <TextColor>1.0 0.4 0.4</TextColor>
@@ -108,13 +108,13 @@
             <String>var resultNumber:Float = 0.0</String>
             <ConnectedNoteIDs>14, 25</ConnectedNoteIDs>
         </Note>
-        <Note ID="24" FontSize="12.0" Position="518.989949,413.025127" Width="97.0">
+        <Note ID="24" FontSize="12.0" Position="519.0,413.0" Width="97.0">
             <Appearance>
                 <Alignment>Left</Alignment>
             </Appearance>
             <String>all operation text</String>
         </Note>
-        <Note ID="25" FontSize="18.0" Position="556.331617,982.708586" Width="39.0">
+        <Note ID="25" FontSize="18.0" Position="556.0,983.0" Width="39.0">
             <Appearance>
                 <Alignment>Left</Alignment>
             </Appearance>
@@ -133,7 +133,7 @@
 
 -&gt; result(=) button click -&gt; </String>
         </Note>
-        <Note ID="28" FontSize="24.0" Position="382.0,1368.0" Width="701.0">
+        <Note ID="28" FontSize="24.0" Position="1221.0,1386.0" Width="701.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.747881 0.366532 0.542813</Border>
@@ -152,7 +152,7 @@ calcaulatingNumber &amp; nowNumber operating   —&gt; result Number</String>
                 <FormatRange Bold="Yes">0,9</FormatRange>
             </Formatting>
         </Note>
-        <Note ID="31" FontSize="24.0" Position="483.52738,1255.109519" Width="454.0">
+        <Note ID="31" FontSize="24.0" Position="1323.0,1272.0" Width="454.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.747881 0.366532 0.542813</Border>
@@ -161,7 +161,7 @@ calcaulatingNumber &amp; nowNumber operating   —&gt; result Number</String>
             <String>frist nowNumber move calculatingNumber
 After second text save nowNumber</String>
         </Note>
-        <Note ID="33" FontSize="24.0" Position="464.582139,1192.636899" Width="138.0">
+        <Note ID="33" FontSize="24.0" Position="1303.0,1211.0" Width="138.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.747881 0.366532 0.542813</Border>
@@ -207,7 +207,7 @@ After second text save nowNumber</String>
             <String>1. calculatingLabel
 2. mainLabel (resultNumber로)</String>
         </Note>
-        <Note ID="38" FontSize="24.0" Position="417.05476,1870.683218" Width="181.0">
+        <Note ID="38" FontSize="24.0" Position="417.0,1871.0" Width="181.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.477193 0.557066 0.76433</Border>
@@ -215,7 +215,7 @@ After second text save nowNumber</String>
             </Appearance>
             <String>calculatingLabel</String>
         </Note>
-        <Note ID="39" FontSize="24.0" Position="224.890481,1632.47262" Width="414.0">
+        <Note ID="39" FontSize="24.0" Position="225.0,1632.0" Width="414.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.477193 0.557066 0.76433</Border>
@@ -224,7 +224,7 @@ After second text save nowNumber</String>
             <String>mainLabel (to change typingNumber)
 calculatingLabel</String>
         </Note>
-        <Note ID="41" FontSize="24.0" Position="248.0,1777.47262" Width="221.0">
+        <Note ID="41" FontSize="24.0" Position="248.0,1777.0" Width="221.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.477193 0.557066 0.76433</Border>
@@ -233,7 +233,7 @@ calculatingLabel</String>
             <String>mainLabel (change)
 calculatingLabel</String>
         </Note>
-        <Note ID="42" FontSize="24.0" Position="261.746418,1957.703434" Width="221.0">
+        <Note ID="42" FontSize="24.0" Position="262.0,1958.0" Width="221.0">
             <Appearance>
                 <Alignment>Left</Alignment>
                 <Border Weight="1">0.477193 0.557066 0.76433</Border>
@@ -241,53 +241,110 @@ calculatingLabel</String>
             </Appearance>
             <String>mainLabel (change)
 calculatingLabel</String>
+        </Note>
+        <Note ID="43" FontSize="24.0" Position="405.0,1366.0" Width="643.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>frist nowNumber move beforeNumber
+After second text save nowNumber
+beforeNumber &amp; nowNumber operating   —&gt; result Number</String>
+        </Note>
+        <Note ID="44" FontSize="24.0" Position="504.0,1253.0" Width="357.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>nowNumber ( == mainLabelText)
+beforeNumber &amp; nowNumber</String>
+        </Note>
+        <Note ID="45" FontSize="24.0" Position="463.0,1193.0" Width="162.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1">0.747881 0.366532 0.542813</Border>
+                <Fill>0.918452 0.807302 0.863467</Fill>
+            </Appearance>
+            <String>beforeNumber</String>
+        </Note>
+        <Note ID="46" FontSize="23.0" Position="635.0,1144.0" Width="247.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+            </Appearance>
+            <String>is frist number —&gt; click</String>
+            <ConnectedNoteIDs>48</ConnectedNoteIDs>
+        </Note>
+        <Note ID="47" FontSize="23.0" Position="855.0,1202.0" Width="251.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+            </Appearance>
+            <String>is frist number —&gt; false</String>
+        </Note>
+        <Note ID="48" FontSize="23.0" Position="910.0,1051.0" Width="157.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+            </Appearance>
+            <String>default == true</String>
+            <ConnectedNoteIDs>46</ConnectedNoteIDs>
+        </Note>
+        <Note ID="49" FontSize="23.0" Position="32.0,1423.0" Width="242.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <TextColor>1.0 0.0 0.0</TextColor>
+            </Appearance>
+            <String>is frist number —&gt; true</String>
         </Note>
     </Notes>
     <BackgroundShapes>
-        <Shape ID="30" Sticky="No" Position="62.52738,1119.0" Width="1146.0" Height="379.0">
+        <Shape ID="30" Sticky="No" Position="63.0,1119.0" Width="1146.0" Height="379.0">
             <Appearance>
                 <Border Weight="1"></Border>
             </Appearance>
         </Shape>
-        <Shape ID="34" Sticky="No" Position="61.94524,1537.0" Width="893.0" Height="586.348773">
+        <Shape ID="34" Sticky="No" Position="62.0,1537.0" Width="893.0" Height="586.348755">
             <Appearance>
                 <Border Weight="1"></Border>
             </Appearance>
         </Shape>
     </BackgroundShapes>
-    <AutoFit>0, 2-3, 5-7, 11-12, 14-15, 17, 19, 22, 24-26, 28-29, 31, 33, 35-38, 41-42</AutoFit>
+    <AutoFit>0, 2-3, 5-7, 11-12, 14-15, 17, 19, 22, 24-26, 28-29, 31, 33, 35-38, 41-49</AutoFit>
     <NoteStyles>
-        <Style Name="Title Text" ID="5C82BB80-7CE3-4682-BF5E-139CC9ACA200" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
-            <FontSize>28.0</FontSize>
-            <IsBold>Yes</IsBold>
-        </Style>
-        <Style Name="Red Text" ID="E92B1E8A-BA1D-4D97-8B7C-82D06E9B6EF4" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
-            <TextColor>1.0 0.0 0.0</TextColor>
+        <Style Name="Blue Bubble" ID="64302397-8D7B-46A9-8B8D-151668C763A3" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
+            <FillColor>0.840969 0.866828 0.925903</FillColor>
         </Style>
         <Style Name="Brown Bubble" ID="F8B5DE92-8D60-4314-84A7-66C49F23B533" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.290055 0.1523 0.182215</BorderColor>
             <FillColor>0.940019 0.892907 0.779716</FillColor>
         </Style>
-        <Style Name="Yellow Bubble" ID="4437BB84-0CC1-46BB-9DDB-0A008AD9E13A" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
-            <BorderThickness>1</BorderThickness>
-            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
-            <FillColor>0.906773 0.910625 0.634363</FillColor>
-        </Style>
         <Style Name="Green Bubble" ID="EBFD4934-4C63-439A-A8B9-E1747BFFB956" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.331867 0.609932 0.356197</BorderColor>
             <FillColor>0.790123 0.882328 0.80198</FillColor>
         </Style>
-        <Style Name="Blue Bubble" ID="64302397-8D7B-46A9-8B8D-151668C763A3" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
-            <BorderThickness>1</BorderThickness>
-            <BorderColor>0.477193 0.557066 0.76433</BorderColor>
-            <FillColor>0.840969 0.866828 0.925903</FillColor>
-        </Style>
         <Style Name="Pink Bubble" ID="8F22E6C3-3284-447F-8804-CB9187681BCF" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
             <BorderColor>0.747881 0.366532 0.542813</BorderColor>
             <FillColor>0.918452 0.807302 0.863467</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="E92B1E8A-BA1D-4D97-8B7C-82D06E9B6EF4" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>1.0 0.0 0.0</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="5C82BB80-7CE3-4682-BF5E-139CC9ACA200" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+        <Style Name="Yellow Bubble" ID="4437BB84-0CC1-46BB-9DDB-0A008AD9E13A" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.756763 0.785592 0.373258</BorderColor>
+            <FillColor>0.906773 0.910625 0.634363</FillColor>
         </Style>
     </NoteStyles>
     <UISettings>
@@ -295,5 +352,5 @@ calculatingLabel</String>
         <DefaultFont>Helvetica</DefaultFont>
         <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
     </UISettings>
-    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+    <PrintSettings PaperSize="594.999973,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScappleDocument>
