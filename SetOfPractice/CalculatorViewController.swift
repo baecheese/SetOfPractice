@@ -8,10 +8,8 @@
 
 import UIKit
 
-struct Calculator {
-    
+struct CalculatorMessage {
     let calculatorLabelDefaultText:String = "계산한 식이 나타납니다."
-    let symbolsOfOperation:[String] = ["delete", "AC", "/", "x", "-", "+", "=", "."]
 }
 
 
@@ -19,7 +17,7 @@ struct Calculator {
 
 class CalculatorViewController: UIViewController {
     
-    let calculatorStruct:Calculator = Calculator()// -- 지울듯
+    private let calculatorMessage:CalculatorMessage = CalculatorMessage()
     
     @IBOutlet private var calculatingLabel: UILabel!
     @IBOutlet private var mainLabel: UILabel!
@@ -43,28 +41,32 @@ class CalculatorViewController: UIViewController {
         else {
             self.changeCalculatingLabel((sender.titleLabel?.text)!)
             self.changeMainLabel((sender.titleLabel?.text)!)
-            self.clickOperationButton(false)
+            //self.clickOperationButton(false)
         }
     }
     
     // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - ing
-    @IBAction private func operationAction(_ sender: UIButton) {        if sender.currentTitle == "🌙" {
-        print("🌙")
-    }
-    else {
-        self.clickOperationButton(true)// mainLabel에는 연산 기호 나오게 안하려고
-        self.changeCalculatingLabel((sender.titleLabel?.text)!)
-        
-        var inputNumber:Float = Float(mainLabel.text!)!
-        calculationBrain.setOperand(number: inputNumber)
-        calculationBrain.performOperation(symbol: sender.currentTitle!)
+    @IBAction private func operationAction(_ sender: UIButton) {
+        if sender.currentTitle == "🌙" {
+            print("🌙")
+        }
+        else {
+            //self.clickOperationButton(true)// mainLabel에는 연산 기호 나오게 안하려고
+            
+            self.changeCalculatingLabel((sender.titleLabel?.text)!)
+            
+            let inputNumber:Float = Float(mainLabel.text!)!
+            calculationBrain.setOperand(number: inputNumber)
+            
+            
+            calculationBrain.performOperation(symbol: sender.currentTitle!)
         }
     }
     
     /* Label Text change */
     
     private func changeCalculatingLabel(_ newText:String){
-        if calculatingLabel.text == calculatorStruct.calculatorLabelDefaultText {
+        if calculatingLabel.text == calculatorMessage.calculatorLabelDefaultText {
             calculatingLabel.text = ""
         }
         calculatingLabel.text = calculatingLabel.text! + newText
@@ -82,65 +84,11 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    
-    
-    // change MainLabel To NewNumber after click OperationButton
-    private func clickOperationButton(_ click:Bool) {
-        if click == false {
-            canChangeMainLabelToNewNumber = false
-            print("can not change MainLabelToNewNumber")
-        }
-        else {
-            canChangeMainLabelToNewNumber = true
-            print("can change MainLabelToNewNumber")
-        }
-    }
-    
-    private func endCalculate(_ end:Bool) -> Bool {
-        if end == true {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    
     // AC 눌렀을 때 text change
     private func resetLabelText() {
-        calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
+        calculatingLabel.text = calculatorMessage.calculatorLabelDefaultText
         mainLabel.text = "0"
     }
-    
-    
-    ///////////////
-    /* operation */
-    ///////////////
-    
-    
-    private func settingNowNumber() {
-        nowNumber = Float(mainLabel.text!)!
-    }
-    
-    
-    private func isFristNumber(_ isFrist:Bool) -> Bool {
-        if isFrist == true {
-            isFristNumber = false
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    // AC 눌렀을 때
-    private func resetCalculator() {
-        beforeNumber = 0
-        nowNumber = 0
-        isFristNumber = true
-        self.resetLabelText()
-    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
