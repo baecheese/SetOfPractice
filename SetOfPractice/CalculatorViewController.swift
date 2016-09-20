@@ -19,11 +19,12 @@ struct Calculator {
 
 class CalculatorViewController: UIViewController {
     
-    let calculatorStruct:Calculator = Calculator()
+    let calculatorStruct:Calculator = Calculator()// -- 지울듯
     
     @IBOutlet private var calculatingLabel: UILabel!
     @IBOutlet private var mainLabel: UILabel!
     
+    private var canChangeMainLabelToNewNumber:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,33 +43,23 @@ class CalculatorViewController: UIViewController {
         else {
             self.changeCalculatingLabel((sender.titleLabel?.text)!)
             self.changeMainLabel((sender.titleLabel?.text)!)
-            
-            self.settingNowNumber()
             self.clickOperationButton(false)
         }
     }
     
-    
-    @IBAction private func operationAction(_ sender: UIButton) {
-        print(sender.tag)
+    // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - ing
+    @IBAction private func operationAction(_ sender: UIButton) {        if sender.currentTitle == "🌙" {
+        print("🌙")
+    }
+    else {
+        self.clickOperationButton(true)// mainLabel에는 연산 기호 나오게 안하려고
+        self.changeCalculatingLabel((sender.titleLabel?.text)!)
         
-        if sender.tag == 0 {
-            print("🌙")
-        }
-        else {
-            self.clickOperationButton(true)// mainLabel에는 숫자만 나오게 해야해서
-            self.changeCalculatingLabel((sender.titleLabel?.text)!)
-            self.startOperation(sender.tag)
+        var inputNumber:Float = Float(mainLabel.text!)!
+        calculationBrain.setOperand(number: inputNumber)
+        calculationBrain.performOperation(symbol: sender.currentTitle!)
         }
     }
-    
-    // ["delete", "AC", "/", "x", "-", "+", "=", "."]
-    //    11       12    13   14   15   16   17  18
-    
-    // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move beforeNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move beforeNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
-    
-    
-    
     
     /* Label Text change */
     

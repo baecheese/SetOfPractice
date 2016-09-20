@@ -19,44 +19,28 @@ class CalculatorModel {
     
     private var isFristNumber:Bool = true
     private var isFristOperation:Bool = true
-    private var canChangeMainLabelToNewNumber:Bool = false//?
     
     func setOperand(number:Float) {
         if isFristNumber == true {
-            beforeNumber = number
+            operatingNumber = number
+            isFristNumber = false
         }
         else {
-            nowNumber = number
+            inputNumber = number
         }
-    }
-    
-    private func startOperation(buttonTage:Int){
-        
-        
     }
     
     // 수학기호
     func performOperation(symbol:String) {
-        
-        switch symbol {
-        case "+":
-            beforeNumber += nowNumber
-        case "-":
-            beforeNumber -= nowNumber
-        case "x":
-            beforeNumber *= nowNumber
-        case "/":
-            beforeNumber /= nowNumber
-        case "=":
-            
-        default:
-            print("설정되지 않은 연산 입니다")
-            break
+        if isFristOperation == true {
+            operatingSymbol = symbol
+            isFristOperation = false
         }
-        
-        canChangeMainLabelToNewNumber = true
-        nowNumber = 0
-        
+        else {
+            self.operatingBeforeNumber()
+            operatingSymbol = symbol
+            inputNumber = 0
+        }
 //        
 //            switch buttonTage {
 //                
@@ -89,6 +73,25 @@ class CalculatorModel {
 //            }
 
     }
+    
+    private func operatingBeforeNumber() {
+        switch operatingSymbol {
+        case "+":
+            operatingNumber += inputNumber
+        case "-":
+            operatingNumber -= inputNumber
+        case "x":
+            operatingNumber *= inputNumber
+        case "/":// 소숫점 반영하는 나누기로 변경 - ing
+            operatingNumber /= inputNumber
+        case "=":
+            resultNumber = operatingNumber
+        default:
+            print("설정되지 않은 연산 입니다")
+            break
+        }
+    }
+    
     
     // Model을 사용하는 class가 result을 설정
     var result:Float {
