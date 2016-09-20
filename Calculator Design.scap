@@ -299,6 +299,21 @@ beforeNumber &amp; nowNumber</String>
             </Appearance>
             <String>is frist number —&gt; true</String>
         </Note>
+        <Note ID="50" FontSize="44.0" Position="1299.383317,341.063197" Width="330.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>1 + 2 + 3    =    6</String>
+            <Formatting>
+                <FormatRange Bold="Yes">0,19</FormatRange>
+            </Formatting>
+        </Note>
+        <Note ID="51" FontSize="14.0" Position="1286.726202,309.0" Width="61.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+            </Appearance>
+            <String>example</String>
+        </Note>
     </Notes>
     <BackgroundShapes>
         <Shape ID="30" Sticky="No" Position="63.0,1119.0" Width="1146.0" Height="379.0">
@@ -312,7 +327,7 @@ beforeNumber &amp; nowNumber</String>
             </Appearance>
         </Shape>
     </BackgroundShapes>
-    <AutoFit>0, 2-3, 5-7, 11-12, 14-15, 17, 19, 22, 24-26, 28-29, 31, 33, 35-38, 41-49</AutoFit>
+    <AutoFit>0, 2-3, 5-7, 11-12, 14-15, 17, 19, 22, 24-26, 28-29, 31, 33, 35-38, 41-51</AutoFit>
     <NoteStyles>
         <Style Name="Blue Bubble" ID="64302397-8D7B-46A9-8B8D-151668C763A3" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
             <BorderThickness>1</BorderThickness>
