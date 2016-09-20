@@ -20,6 +20,8 @@
 		031D50951D74519F00737732 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D50901D74519F00737732 /* CalculatorViewController.swift */; };
 		031D50961D74519F00737732 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031D50901D74519F00737732 /* CalculatorViewController.swift */; };
 		03A245C31D90E2AD00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
+		03A245C51D90FEBD00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
+		03A245C61D90FEBE00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +293,7 @@
 				031D50921D74519F00737732 /* MainTableViewController.swift in Sources */,
 				031D50951D74519F00737732 /* CalculatorViewController.swift in Sources */,
 				031D50771D74514400737732 /* SetOfPracticeTests.swift in Sources */,
+				03A245C51D90FEBD00392C11 /* CalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +304,7 @@
 				031D50931D74519F00737732 /* MainTableViewController.swift in Sources */,
 				031D50961D74519F00737732 /* CalculatorViewController.swift in Sources */,
 				031D50821D74514400737732 /* SetOfPracticeUITests.swift in Sources */,
+				03A245C61D90FEBE00392C11 /* CalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

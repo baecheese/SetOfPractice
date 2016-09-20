@@ -11,7 +11,7 @@ import UIKit
 struct Calculator {
     
     let calculatorLabelDefaultText:String = "계산한 식이 나타납니다."
-    let symbolsOfOperation:[String] = ["delete", "AC", "/", "x", "-", "+", "=", "."]//11~
+    let symbolsOfOperation:[String] = ["delete", "AC", "/", "x", "-", "+", "=", "."]
 }
 
 
@@ -28,68 +28,21 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.settingButtonTag()
-        self.settingButtonText()
-        
-        
-        deleteButton.currentTitle
-        
     }
     
-    /* button tag setting */
-    private func settingButtonTag() {
-        let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
-        
-        let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
-        
-        // numberButton ~ operationButton tag == 1...ButtonTatalCount
-        
-        var numberButtonListIndex:Int = 0
-        var operationButtonListIndex:Int = 0
-        
-        var startTagNumber:Int = 1
-        var endTagNumber:Int = numberButtonList.count
-        for numberButtonTag in startTagNumber...endTagNumber {
-            numberButtonList[numberButtonListIndex].tag = numberButtonTag
-            //print("numberButton tag 세팅 : \(numberButtonList[numberButtonListIndex]) tag = \(numberButtonList[numberButtonListIndex].tag)")
-            numberButtonListIndex += 1
-        }
-        
-        startTagNumber = numberButtonList.count+1
-        endTagNumber = startTagNumber+operationButtonList.count-1
-        for operationButtonTag in startTagNumber...endTagNumber {
-            operationButtonList[operationButtonListIndex].tag = operationButtonTag
-            //print("operationButton tag 세팅 : \(operationButtonList[operationButtonListIndex]) tag = \(operationButtonList[operationButtonListIndex].tag)")
-            operationButtonListIndex += 1
-        }
-    }
     
-    /*button text setting */
-    private func settingButtonText() {
-        let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
-        let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
-        
-        for text in 0...numberButtonList.count-1 {
-            numberButtonList[text].setTitle(String(text), for: UIControlState())
-            numberButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
-        }
-        
-        for text in 0...operationButtonList.count-1 {
-            operationButtonList[text].setTitle(calculatorStruct.symbolsOfOperation[text], for: UIControlState())
-            operationButtonList[text].titleLabel!.font =  UIFont(name: "Helvetica-Bold", size: 18)
-        }
-        
-    }
+    private var calculationBrain:CalculatorModel = CalculatorModel()
     
     /* button action */
     
-    @IBAction private func numberButtonAction(_ sender: UIButton) {
-        if sender.tag == 0 {
+    @IBAction private func numberButtonAction(to sender: UIButton) {
+        if sender.currentTitle == "🐙" {
             print("🐙")
         }
         else {
             self.changeCalculatingLabel((sender.titleLabel?.text)!)
             self.changeMainLabel((sender.titleLabel?.text)!)
+            
             self.settingNowNumber()
             self.clickOperationButton(false)
         }
