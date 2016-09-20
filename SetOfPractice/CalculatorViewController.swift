@@ -15,45 +15,24 @@ struct Calculator {
 }
 
 
-class CalculatorViewController: UIViewController {
+// Calculator View and Controller
 
+class CalculatorViewController: UIViewController {
+    
     let calculatorStruct:Calculator = Calculator()
-    
-    @IBOutlet private var deleteButton: UIButton!
-    @IBOutlet private var resetButton: UIButton!
-    @IBOutlet private var divisionButton: UIButton!
-    @IBOutlet private var multiplicationButton: UIButton!
-    @IBOutlet private var subtractionButton: UIButton!
-    @IBOutlet private var additionButton: UIButton!
-    @IBOutlet private var resultButton: UIButton!
-    @IBOutlet private var dotButton: UIButton!
-    
-    @IBOutlet private var zeroButton: UIButton!
-    @IBOutlet private var oneButton: UIButton!
-    @IBOutlet private var twoButton: UIButton!
-    @IBOutlet private var threeButton: UIButton!
-    @IBOutlet private var fourButton: UIButton!
-    @IBOutlet private var fiveButton: UIButton!
-    @IBOutlet private var sixButton: UIButton!
-    @IBOutlet private var sevenButton: UIButton!
-    @IBOutlet private var eightButton: UIButton!
-    @IBOutlet private var nineButton: UIButton!
     
     @IBOutlet private var calculatingLabel: UILabel!
     @IBOutlet private var mainLabel: UILabel!
     
-    private var beforeNumber:Float = 0.0
-    private var nowNumber:Float = 0.0
-    private var resultNumber:Float = 0.0
-    
-    private var isFristNumber:Bool = true
-    private var canChangeMainLabelToNewNumber:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.settingButtonTag()
         self.settingButtonText()
+        
+        
+        deleteButton.currentTitle
         
     }
     
@@ -109,10 +88,10 @@ class CalculatorViewController: UIViewController {
             print("🐙")
         }
         else {
-        self.changeCalculatingLabel((sender.titleLabel?.text)!)
-        self.changeMainLabel((sender.titleLabel?.text)!)
-        self.settingNowNumber()
-        self.clickOperationButton(false)
+            self.changeCalculatingLabel((sender.titleLabel?.text)!)
+            self.changeMainLabel((sender.titleLabel?.text)!)
+            self.settingNowNumber()
+            self.clickOperationButton(false)
         }
     }
     
@@ -136,48 +115,7 @@ class CalculatorViewController: UIViewController {
     // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move beforeNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move beforeNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
     
     
-    func private startOperation(_ buttonTage:Int){
-        if isFristNumber(isFristNumber) {
-            beforeNumber = nowNumber
-            nowNumber = 0
-            
-        }
-        else {
-        
-            //////////
-            
-            switch buttonTage {
-                
-            // 연산 기호에 따른 연산  ---- chessing (하는중)
-//            case 11:// delete
-//                // delete / AC / . ---> cheesing
-//                print("delete")
-            case 12://
-                self.resetCalculator()
-            case 13:// /
-                // 소숫점 나누기 수정 요망 ---> cheesing
-                beforeNumber = Float(mainLabel.text!)!
-            case 14:// x
-                beforeNumber *= nowNumber
-            case 15:// -
-                beforeNumber -= nowNumber
-            case 16:// +
-                beforeNumber += nowNumber
-            case 17:// =
-                mainLabel.text = String(beforeNumber)
-            case 18:
-                //.button// -- default 다르니 다시 설정
-//                self.changeCalculatingLabel((sender.titleLabel?.text)!)
-//                self.changeMainLabel((sender.titleLabel?.text)!)
-                self.settingNowNumber()
-            default:
-                canChangeMainLabelToNewNumber = true
-                print("beforeNumber - \(beforeNumber)  nowNumber - \(nowNumber)")
-                nowNumber = 0
-            }
-        }
-        
-    }
+    
     
     /* Label Text change */
     
@@ -231,8 +169,8 @@ class CalculatorViewController: UIViewController {
     }
     
     
-      ///////////////
-     /* operation */
+    ///////////////
+    /* operation */
     ///////////////
     
     
@@ -259,7 +197,7 @@ class CalculatorViewController: UIViewController {
         self.resetLabelText()
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
