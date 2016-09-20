@@ -34,13 +34,14 @@ class CalculatorViewController: UIViewController {
     
     /* button action */
     
-    @IBAction private func numberButtonAction(to sender: UIButton) {
+    @IBAction private func numberButtonAction(_ sender: UIButton) {
         if sender.currentTitle == "🐙" {
             print("🐙")
         }
         else {
             self.changeCalculatingLabel((sender.titleLabel?.text)!)
             self.changeMainLabel((sender.titleLabel?.text)!)
+            canChangeMainLabelToNewNumber = false
             //self.clickOperationButton(false)
         }
     }
@@ -58,8 +59,9 @@ class CalculatorViewController: UIViewController {
             let inputNumber:Float = Float(mainLabel.text!)!
             calculationBrain.setOperand(number: inputNumber)
             
-            
             calculationBrain.performOperation(symbol: sender.currentTitle!)
+            
+            canChangeMainLabelToNewNumber = true
         }
     }
     
@@ -73,10 +75,7 @@ class CalculatorViewController: UIViewController {
     }
     
     private func changeMainLabel(_ newText:String) {
-        if Int(mainLabel.text!) == 0 {
-            mainLabel.text = newText
-        }
-        else if canChangeMainLabelToNewNumber == true {
+        if mainLabel.text == "0" || canChangeMainLabelToNewNumber == true {
             mainLabel.text = newText
         }
         else {
