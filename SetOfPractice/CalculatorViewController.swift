@@ -19,35 +19,35 @@ class CalculatorViewController: UIViewController {
 
     let calculatorStruct:Calculator = Calculator()
     
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var divisionButton: UIButton!
-    @IBOutlet weak var multiplicationButton: UIButton!
-    @IBOutlet weak var subtractionButton: UIButton!
-    @IBOutlet weak var additionButton: UIButton!
-    @IBOutlet weak var resultButton: UIButton!
-    @IBOutlet weak var dotButton: UIButton!
+    @IBOutlet private var deleteButton: UIButton!
+    @IBOutlet private var resetButton: UIButton!
+    @IBOutlet private var divisionButton: UIButton!
+    @IBOutlet private var multiplicationButton: UIButton!
+    @IBOutlet private var subtractionButton: UIButton!
+    @IBOutlet private var additionButton: UIButton!
+    @IBOutlet private var resultButton: UIButton!
+    @IBOutlet private var dotButton: UIButton!
     
-    @IBOutlet weak var zeroButton: UIButton!
-    @IBOutlet weak var oneButton: UIButton!
-    @IBOutlet weak var twoButton: UIButton!
-    @IBOutlet weak var threeButton: UIButton!
-    @IBOutlet weak var fourButton: UIButton!
-    @IBOutlet weak var fiveButton: UIButton!
-    @IBOutlet weak var sixButton: UIButton!
-    @IBOutlet weak var sevenButton: UIButton!
-    @IBOutlet weak var eightButton: UIButton!
-    @IBOutlet weak var nineButton: UIButton!
+    @IBOutlet private var zeroButton: UIButton!
+    @IBOutlet private var oneButton: UIButton!
+    @IBOutlet private var twoButton: UIButton!
+    @IBOutlet private var threeButton: UIButton!
+    @IBOutlet private var fourButton: UIButton!
+    @IBOutlet private var fiveButton: UIButton!
+    @IBOutlet private var sixButton: UIButton!
+    @IBOutlet private var sevenButton: UIButton!
+    @IBOutlet private var eightButton: UIButton!
+    @IBOutlet private var nineButton: UIButton!
     
-    @IBOutlet var calculatingLabel: UILabel!
-    @IBOutlet var mainLabel: UILabel!
+    @IBOutlet private var calculatingLabel: UILabel!
+    @IBOutlet private var mainLabel: UILabel!
     
-    var beforeNumber:Float = 0.0
-    var nowNumber:Float = 0.0
-    var resultNumber:Float = 0.0
+    private var beforeNumber:Float = 0.0
+    private var nowNumber:Float = 0.0
+    private var resultNumber:Float = 0.0
     
-    var isFristNumber:Bool = true
-    var canChangeMainLabelToNewNumber:Bool = false
+    private var isFristNumber:Bool = true
+    private var canChangeMainLabelToNewNumber:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class CalculatorViewController: UIViewController {
     }
     
     /* button tag setting */
-    func settingButtonTag() {
+    private func settingButtonTag() {
         let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
         
         let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
@@ -86,7 +86,7 @@ class CalculatorViewController: UIViewController {
     }
     
     /*button text setting */
-    func settingButtonText() {
+    private func settingButtonText() {
         let numberButtonList:[UIButton] = [zeroButton, oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, eightButton, nineButton]
         let operationButtonList:[UIButton] = [deleteButton, resetButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
         
@@ -104,7 +104,7 @@ class CalculatorViewController: UIViewController {
     
     /* button action */
     
-    @IBAction func numberButtonAction(_ sender: UIButton) {
+    @IBAction private func numberButtonAction(_ sender: UIButton) {
         if sender.tag == 0 {
             print("🐙")
         }
@@ -117,7 +117,7 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    @IBAction func operationAction(_ sender: UIButton) {
+    @IBAction private func operationAction(_ sender: UIButton) {
         print(sender.tag)
         
         if sender.tag == 0 {
@@ -136,7 +136,7 @@ class CalculatorViewController: UIViewController {
     // typing -> operationButton click -> nowNumber -> typing -> operationButton click -> frist nowNumber move beforeNumber / After second text save nowNumber - ... -> result(=) button click -> frist nowNumber move beforeNumber / After second text save nowNumber / calcaulatingNumber & nowNumber operating
     
     
-    func startOperation(_ buttonTage:Int){
+    func private startOperation(_ buttonTage:Int){
         if isFristNumber(isFristNumber) {
             beforeNumber = nowNumber
             nowNumber = 0
@@ -181,14 +181,14 @@ class CalculatorViewController: UIViewController {
     
     /* Label Text change */
     
-    func changeCalculatingLabel(_ newText:String){
+    private func changeCalculatingLabel(_ newText:String){
         if calculatingLabel.text == calculatorStruct.calculatorLabelDefaultText {
             calculatingLabel.text = ""
         }
         calculatingLabel.text = calculatingLabel.text! + newText
     }
     
-    func changeMainLabel(_ newText:String) {
+    private func changeMainLabel(_ newText:String) {
         if Int(mainLabel.text!) == 0 {
             mainLabel.text = newText
         }
@@ -203,7 +203,7 @@ class CalculatorViewController: UIViewController {
     
     
     // change MainLabel To NewNumber after click OperationButton
-    func clickOperationButton(_ click:Bool) {
+    private func clickOperationButton(_ click:Bool) {
         if click == false {
             canChangeMainLabelToNewNumber = false
             print("can not change MainLabelToNewNumber")
@@ -214,7 +214,7 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    func endCalculate(_ end:Bool) -> Bool {
+    private func endCalculate(_ end:Bool) -> Bool {
         if end == true {
             return true
         }
@@ -224,8 +224,8 @@ class CalculatorViewController: UIViewController {
     }
     
     
-    // AC 눌렀을 때 test change
-    func resetLabelText() {
+    // AC 눌렀을 때 text change
+    private func resetLabelText() {
         calculatingLabel.text = calculatorStruct.calculatorLabelDefaultText
         mainLabel.text = "0"
     }
@@ -236,12 +236,12 @@ class CalculatorViewController: UIViewController {
     ///////////////
     
     
-    func settingNowNumber() {
+    private func settingNowNumber() {
         nowNumber = Float(mainLabel.text!)!
     }
     
     
-    func isFristNumber(_ isFrist:Bool) -> Bool {
+    private func isFristNumber(_ isFrist:Bool) -> Bool {
         if isFrist == true {
             isFristNumber = false
             return true
@@ -252,7 +252,7 @@ class CalculatorViewController: UIViewController {
     }
     
     // AC 눌렀을 때
-    func resetCalculator() {
+    private func resetCalculator() {
         beforeNumber = 0
         nowNumber = 0
         isFristNumber = true
