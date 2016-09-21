@@ -7,6 +7,7 @@
 ***
 
 ## 🌙 Basic Calculator
+
 #### 1. Try MVC Desgin Pattern.
 - Model File name is CalculatorModel.
 
@@ -18,7 +19,5 @@
 - Reference document : http://goo.gl/KmFBJu
 
 #### 4. Test code use and study. (ing)
-
-***
 
 ### 🤖 This project is still in the making..

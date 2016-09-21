@@ -39,17 +39,21 @@ class CalculatorModel {
         else {
             //이전 식 먼저 계산 하고
             self.operatingBeforeNumber()
-            // input 된 연산기호 저장
-            operatingSymbol = symbol
-            inputNumber = 0
-            
-            if symbol == "=" {
+            switch symbol {
+            case "=":
                 resultNumber = operatingNumber
+            case "AC":
+                self.resetCalculator()
+            default:
+                // input 된 연산기호 저장
+                operatingSymbol = symbol
+                inputNumber = 0
             }
         }
     }
     
     private func operatingBeforeNumber() {
+        print("\(operatingNumber) \(operatingSymbol) \(inputNumber)")
         switch operatingSymbol {
         case "+":
             operatingNumber += inputNumber
@@ -59,8 +63,6 @@ class CalculatorModel {
             operatingNumber *= inputNumber
         case "/":// 소숫점 반영하는 나누기로 변경 - ing
             operatingNumber /= inputNumber
-        case "AC":
-            self.resetCalculator()
         default:
             print("설정되지 않은 연산 입니다")
             break
@@ -82,6 +84,7 @@ class CalculatorModel {
     // Model을 사용하는 class가 result을 설정
     var result:Float {
         get {
+            print(" = \(resultNumber)")
             return resultNumber
         }
     }
