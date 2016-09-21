@@ -39,14 +39,14 @@ class CalculatorModel {
         else {
             //이전 식 먼저 계산 하고
             self.operatingBeforeNumber()
+            // input 된 연산기호 저장
+            operatingSymbol = symbol
             switch symbol {
             case "=":
                 resultNumber = operatingNumber
             case "AC":
                 self.resetCalculator()
             default:
-                // input 된 연산기호 저장
-                operatingSymbol = symbol
                 inputNumber = 0
             }
         }
@@ -64,7 +64,7 @@ class CalculatorModel {
         case "/":// 소숫점 반영하는 나누기로 변경 - ing
             operatingNumber /= inputNumber
         default:
-            print("설정되지 않은 연산 입니다")
+            print("연산이 아닙니다")
             break
         }
     }

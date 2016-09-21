@@ -70,35 +70,7 @@ class CalculatorViewController: UIViewController {
             let result:String = String(calculationBrain.result)
             self.changeCalculatingLabel(result)
             self.changeMainLabel(result)
-        }
-        
-        //리셋 관련 예외처리중
-//        
-//        if sender.currentTitle == "🌙" {
-//            print("🌙")
-//        }
-//        else {
-//            //self.clickOperationButton(true)// mainLabel에는 연산 기호 나오게 안하려고
-//            
-//            self.changeCalculatingLabel((sender.titleLabel?.text)!)
-//            
-//            let inputNumber:Float = Float(mainLabel.text!)!
-//            calculationBrain.setOperand(number: inputNumber)
-//            
-//            calculationBrain.performOperation(symbol: sender.currentTitle!)
-//            
-//            canChangeMainLabelToNewNumber = true
-//            
-//            if sender.currentTitle == "=" {
-//                let result:String = String(calculationBrain.result)
-//                self.changeCalculatingLabel(result)
-//                self.changeMainLabel(result)
-//            }
-//            
-//            if sender.currentTitle == "AC" {
-//                self.resetLabelText()
-//            }
-        
+        }        
     }
     
     /* Label Text change */
