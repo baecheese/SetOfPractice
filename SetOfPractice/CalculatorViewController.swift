@@ -23,6 +23,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet private var mainLabel: UILabel!
     
     private var canChangeMainLabelToNewNumber:Bool = false
+    private var oneCheckToCalculate:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,35 +44,53 @@ class CalculatorViewController: UIViewController {
             self.changeCalculatingLabel((sender.titleLabel?.text)!)
             self.changeMainLabel((sender.titleLabel?.text)!)
             canChangeMainLabelToNewNumber = false
-            //self.clickOperationButton(false)
+            oneCheckToCalculate = 0
         }
     }
     
     // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - jiring
     @IBAction private func operationAction(_ sender: UIButton) {
+        
+        //(예외처리) 계산 기호 두 번 눌렀을 땐 한 번만 작동하게 체크
+        oneCheckToCalculate += 1
         let operationSymbol:String = sender.currentTitle!
-        switch operationSymbol {
-        case "🌙":
-            print("🌙")
-        case "AC":
-            calculationBrain.performOperation(symbol: operationSymbol)
-            self.resetLabelText()
-        default:
-            self.changeCalculatingLabel((sender.titleLabel?.text)!)
+        
+        if oneCheckToCalculate == 1 {
+            switch operationSymbol {
+            case "🌙":
+                print("🌙")
+            case "AC":
+                calculationBrain.performOperation(symbol: operationSymbol)
+                self.resetLabelText()
+            default:
+
+                self.changeCalculatingLabel((sender.titleLabel?.text)!)
+                
+                let inputNumber:Float = Float(mainLabel.text!)!
+                calculationBrain.setOperand(number: inputNumber)
+                calculationBrain.performOperation(symbol: operationSymbol)
+                canChangeMainLabelToNewNumber = true
+                break
+                
+            }
+            if sender.currentTitle == "=" {
+                let result:String = String(calculationBrain.result)
+                self.changeCalculatingLabel(result)
+                self.changeMainLabel(result)
+            }
+        }
             
-            let inputNumber:Float = Float(mainLabel.text!)!
-            calculationBrain.setOperand(number: inputNumber)
-            calculationBrain.performOperation(symbol: operationSymbol)
-            canChangeMainLabelToNewNumber = true
-            break
-            
+        else {
+            //(예외처리) AC(초기화)는 여러 번 눌린 후에도 상관 없이 가능하도록 재귀
+            if operationSymbol == "AC" {
+                oneCheckToCalculate = 0
+                operationAction(sender)
+            }
+            else {
+            print("계산 기호 버튼이 여러번 눌렸습니다.")
+            }
         }
         
-        if sender.currentTitle == "=" {
-            let result:String = String(calculationBrain.result)
-            self.changeCalculatingLabel(result)
-            self.changeMainLabel(result)
-        }        
     }
     
     /* Label Text change */
