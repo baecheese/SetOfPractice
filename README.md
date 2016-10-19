@@ -8,7 +8,7 @@
 
 ## 🌙 Basic Calculator
 
-### [preview video](https://youtu.be/VKSnMj04a1M)
+### 📼 [preview video](https://youtu.be/VKSnMj04a1M)
 
 #### 1. Try MVC Desgin Pattern.
 - Model File name is CalculatorModel.
