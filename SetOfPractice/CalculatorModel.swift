@@ -13,14 +13,14 @@ import Foundation
 class CalculatorModel {
     
     private var operatingSymbol:String = ""
-    private var operatingNumber:Float = 0.0
-    private var inputNumber:Float = 0.0
-    private var resultNumber:Float = 0.0
+    private var operatingNumber:Double = 0.0
+    private var inputNumber:Double = 0.0
+    private var resultNumber:Double = 0.0
     
     private var isFristNumber:Bool = true
     private var isFristOperation:Bool = true
     
-    func setOperand(number:Float) {
+    func setOperand(number:Double) {
         if isFristNumber == true {
             operatingNumber = number
             isFristNumber = false
@@ -82,7 +82,7 @@ class CalculatorModel {
     
     // return하는 애로 위에도 수정해야함
     // Model을 사용하는 class가 result을 설정
-    var result:Float {
+    var result:Double {
         get {
             print(" = \(resultNumber)")
             return resultNumber

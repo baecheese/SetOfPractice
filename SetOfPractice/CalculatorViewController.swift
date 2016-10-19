@@ -37,18 +37,13 @@ class CalculatorViewController: UIViewController {
     
     /* "."도 number에 포함 */
     @IBAction private func numberButtonAction(_ sender: UIButton) {
-        if sender.currentTitle == "🐙" {
-            print("🐙")
-        }
-        else {
-            self.changeCalculatingLabel((sender.titleLabel?.text)!)
-            self.changeMainLabel((sender.titleLabel?.text)!)
-            canChangeMainLabelToNewNumber = false
-            oneCheckToCalculate = 0
-        }
+        self.changeCalculatingLabel((sender.titleLabel?.text)!)
+        self.changeMainLabel((sender.titleLabel?.text)!)
+        canChangeMainLabelToNewNumber = false
+        oneCheckToCalculate = 0
     }
     
-    // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - jiring
+    
     @IBAction private func operationAction(_ sender: UIButton) {
         
         //(예외처리) 계산 기호 두 번 눌렀을 땐 한 번만 작동하게 체크
@@ -57,8 +52,6 @@ class CalculatorViewController: UIViewController {
         
         if oneCheckToCalculate == 1 {
             switch operationSymbol {
-            case "🌙":
-                print("🌙")
             case "AC":
                 calculationBrain.performOperation(symbol: operationSymbol)
                 self.resetLabelText()
@@ -66,7 +59,7 @@ class CalculatorViewController: UIViewController {
 
                 self.changeCalculatingLabel((sender.titleLabel?.text)!)
                 
-                let inputNumber:Float = Float(mainLabel.text!)!
+                let inputNumber:Double = Double(mainLabel.text!)!
                 calculationBrain.setOperand(number: inputNumber)
                 calculationBrain.performOperation(symbol: operationSymbol)
                 canChangeMainLabelToNewNumber = true
