@@ -34,6 +34,7 @@ class CalculatorViewController: UIViewController {
     
     /* button action */
     
+    /* "."도 number에 포함 */
     @IBAction private func numberButtonAction(_ sender: UIButton) {
         if sender.currentTitle == "🐙" {
             print("🐙")
@@ -46,7 +47,7 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - ing
+    // (예외처리 추가하기) 두번 눌렀을 땐 한 번만 작동하게 - jiring
     @IBAction private func operationAction(_ sender: UIButton) {
         let operationSymbol:String = sender.currentTitle!
         switch operationSymbol {

@@ -40,7 +40,7 @@ class CalculatorModel {
             //이전 식 먼저 계산 하고
             self.operatingBeforeNumber()
             // input 된 연산기호 저장
-            operatingSymbol = symbol 
+            operatingSymbol = symbol
             switch symbol {
             case "=":
                 resultNumber = operatingNumber
@@ -61,7 +61,7 @@ class CalculatorModel {
             operatingNumber -= inputNumber
         case "x":
             operatingNumber *= inputNumber
-        case "/":// 소숫점 반영하는 나누기로 변경 - ing
+        case "/":// 소숫점 반영하는 나누기로 변경 - jiring
             operatingNumber /= inputNumber
         default:
             print("연산이 아닙니다")
