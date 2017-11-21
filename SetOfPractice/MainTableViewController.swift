@@ -10,12 +10,16 @@ import UIKit
 
 struct MainTableViewData {
     
-    let practiceSection:[String] = ["Calculator", "etc"]
-    let practiceLow = [["Calculator basic", "Calculator deep"],["etc"]]
-    let canMoveNextPage = [[true, false],[false]]
+    let practiceSection:[String] = ["Calculator", "Network", "etc"]
+    let practiceRow = [["Calculator basic", "Calculator deep"],["Weather"],["etc"]]
+    let canMoveNextPage = ["Calculator basic" : true,
+                           "Calculator deep" : false,
+                           "Weather" : true,
+                           "etc" : false]
     
     // 다음 페이지가 있을 경우, lowText에 해당하는 value가 Identifier 이도록
-    let nextPageIdentifier = ["Calculator basic" : "CalculatorViewController"]
+    let nextPageIdentifier = ["Calculator basic" : "CalculatorViewController",
+                              "Weather" : "SelectCityTableViewController"]
 }
 
 class MainTableViewController: UITableViewController {
@@ -45,7 +49,7 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return mainTableViewData.practiceLow[section].count
+        return mainTableViewData.practiceRow[section].count
     }
     
     // sectionTitle
@@ -58,7 +62,7 @@ class MainTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         
-        let cellArray = mainTableViewData.practiceLow[(indexPath as NSIndexPath).section]
+        let cellArray = mainTableViewData.practiceRow[(indexPath as NSIndexPath).section]
         let cellText:String = cellArray[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = cellText
         
@@ -68,23 +72,22 @@ class MainTableViewController: UITableViewController {
     
     // tableview delegate - cell select
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let nextPageArray = mainTableViewData.canMoveNextPage[(indexPath as NSIndexPath).section]
-        let canMoveNextPage:Bool = nextPageArray[(indexPath as NSIndexPath).row]
-        
-        if canMoveNextPage == true {
-            
-            let lowArrayInSection = mainTableViewData.practiceLow[(indexPath as NSIndexPath).section]
-            let lowText:String = lowArrayInSection[(indexPath as NSIndexPath).row]
-            
-            let nextPageIdentifier:String = (mainTableViewData.nextPageIdentifier[lowText])!
-            
-            let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: nextPageIdentifier)
-            self.navigationController?.pushViewController(secondViewController, animated: true)
-        }
-        else {
-            //선택 해제 애니메이션
-            tableView.deselectRow(at: indexPath, animated: true)
+        let cellText = tableView.cellForRow(at: indexPath)!.textLabel?.text
+        if let canMoveNextPage = mainTableViewData.canMoveNextPage[cellText!] {
+            if canMoveNextPage == true {
+                
+                let lowArrayInSection = mainTableViewData.practiceRow[(indexPath as NSIndexPath).section]
+                let lowText:String = lowArrayInSection[(indexPath as NSIndexPath).row]
+                
+                let nextPageIdentifier:String = (mainTableViewData.nextPageIdentifier[lowText])!
+                
+                let secondViewController = self.storyboard!.instantiateViewController(withIdentifier: nextPageIdentifier)
+                self.navigationController?.pushViewController(secondViewController, animated: true)
+            }
+            else {
+                //선택 해제 애니메이션
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
     

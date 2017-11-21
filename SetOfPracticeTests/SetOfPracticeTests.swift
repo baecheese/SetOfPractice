@@ -24,39 +24,23 @@ class SetOfPracticeTests: XCTestCase {
     }
     
     func testExample() {
-        var deleteButton: UIButton = UIButton()
-        var divisionButton: UIButton = UIButton()
-        var multiplicationButton: UIButton = UIButton()
-        var subtractionButton: UIButton = UIButton()
-        var additionButton: UIButton = UIButton()
-        var resultButton: UIButton = UIButton()
-        var dotButton: UIButton = UIButton()
-        
-        let calculatorStrut = Calculator()
-        
-        let buttonList:[UIButton] = [deleteButton, divisionButton, multiplicationButton, subtractionButton, additionButton, resultButton, dotButton]
-        let operationList:[String] = calculatorStrut.symbolsOfOperation
-        
-        
-        for number in 0...buttonList.count {
-            buttonList[number].setTitle(operationList[number], forState: UIControlState.Normal)
-            
-            print("\(buttonList[number]) == \(operationList[number])")
-        
-        
+        getByQuery(query: "1.2", JSONDic: ["1":["2": 1 ]])
+    }
+    
+    func getByQuery(query:String, JSONDic:[String:Any]) -> Any? {
+        var terms = query.split(separator: ".").map { String($0) }
+        if let value = JSONDic[terms[0]] {
+            if 1 == terms.count {
+                return value
+            }
+            let newTerms = terms.remove(index:0)
+            print("newTerms = \(newTerms)")
         }
-        
-        
-        
+        return nil
     }
     
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-            self.testExample()
-            
-        }
+        
     }
     
 }
