@@ -23,6 +23,11 @@
 		035AFCB71FC3DE0400448767 /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AFCB61FC3DE0400448767 /* WeatherInfo.swift */; };
 		035AFCB91FC3DEE600448767 /* SelectCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AFCB81FC3DEE600448767 /* SelectCityTableViewController.swift */; };
 		035AFCBB1FC3DFCF00448767 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AFCBA1FC3DFCF00448767 /* CityInfo.swift */; };
+		035AFCC11FC3EB2800448767 /* 12-14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 035AFCBD1FC3EB2800448767 /* 12-14.jpg */; };
+		035AFCC21FC3EB2800448767 /* 7-11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 035AFCBE1FC3EB2800448767 /* 7-11.jpg */; };
+		035AFCC31FC3EB2800448767 /* 2-6.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 035AFCBF1FC3EB2800448767 /* 2-6.JPG */; };
+		035AFCC41FC3EB2800448767 /* 01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 035AFCC01FC3EB2800448767 /* 01.jpg */; };
+		035AFCC61FC4002600448767 /* defaultImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 035AFCC51FC4002600448767 /* defaultImage.jpg */; };
 		03A245C31D90E2AD00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
 		03A245C51D90FEBD00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
 		03A245C61D90FEBE00392C11 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A245C21D90E2AD00392C11 /* CalculatorModel.swift */; };
@@ -72,6 +77,11 @@
 		035AFCB61FC3DE0400448767 /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		035AFCB81FC3DEE600448767 /* SelectCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityTableViewController.swift; sourceTree = "<group>"; };
 		035AFCBA1FC3DFCF00448767 /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		035AFCBD1FC3EB2800448767 /* 12-14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "12-14.jpg"; sourceTree = "<group>"; };
+		035AFCBE1FC3EB2800448767 /* 7-11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "7-11.jpg"; sourceTree = "<group>"; };
+		035AFCBF1FC3EB2800448767 /* 2-6.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "2-6.JPG"; sourceTree = "<group>"; };
+		035AFCC01FC3EB2800448767 /* 01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 01.jpg; sourceTree = "<group>"; };
+		035AFCC51FC4002600448767 /* defaultImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultImage.jpg; sourceTree = "<group>"; };
 		03A245C21D90E2AD00392C11 /* CalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		03AB38CC1DB7504B0093D29B /* CalculatorDoc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorDoc.swift; sourceTree = "<group>"; };
 		03AB38CE1DB751090093D29B /* CalculatorDataFlow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalculatorDataFlow.png; sourceTree = "<group>"; };
@@ -173,6 +183,18 @@
 			path = SetOfPracticeUITests;
 			sourceTree = "<group>";
 		};
+		035AFCBC1FC3EA3900448767 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				035AFCC51FC4002600448767 /* defaultImage.jpg */,
+				035AFCC01FC3EB2800448767 /* 01.jpg */,
+				035AFCBF1FC3EB2800448767 /* 2-6.JPG */,
+				035AFCBE1FC3EB2800448767 /* 7-11.jpg */,
+				035AFCBD1FC3EB2800448767 /* 12-14.jpg */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		03A245C41D90E2B900392C11 /* CalculatorBasicProject */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +215,7 @@
 				035AFCBA1FC3DFCF00448767 /* CityInfo.swift */,
 				035AFCB61FC3DE0400448767 /* WeatherInfo.swift */,
 				03DC52F51FBAACF9003532D6 /* MyJSONPaser.swift */,
+				035AFCBC1FC3EA3900448767 /* resource */,
 			);
 			name = Alamofire;
 			sourceTree = "<group>";
@@ -338,7 +361,12 @@
 			files = (
 				031D506C1D74514400737732 /* LaunchScreen.storyboard in Resources */,
 				03AB38CF1DB751090093D29B /* CalculatorDataFlow.png in Resources */,
+				035AFCC61FC4002600448767 /* defaultImage.jpg in Resources */,
+				035AFCC21FC3EB2800448767 /* 7-11.jpg in Resources */,
 				031D50691D74514400737732 /* Assets.xcassets in Resources */,
+				035AFCC31FC3EB2800448767 /* 2-6.JPG in Resources */,
+				035AFCC11FC3EB2800448767 /* 12-14.jpg in Resources */,
+				035AFCC41FC3EB2800448767 /* 01.jpg in Resources */,
 				031D50671D74514400737732 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

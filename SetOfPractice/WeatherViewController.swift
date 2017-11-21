@@ -15,22 +15,55 @@ class WeatherCell: UITableViewCell {
 
 class WeatherViewController: UIViewController, WeatherManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    var cityParmeter = -1
+    var selectArea = ""
     let weatherManager = WeatherManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         weatherManager.delegate = self
-        weatherManager.getMinutelyRequest()
         tableview.delegate = self
         tableview.dataSource = self
     }
     
-    @IBOutlet weak var watch: UILabel!
+    override func viewWillLayoutSubviews() {
+        weatherManager.getMinutelyRequest(parameterID: cityParmeter)
+    }
+    
+    @IBOutlet var area: UILabel!
+    @IBOutlet var sky: UILabel!
+    @IBOutlet var temparature: UILabel!
+    
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet var backgroundImage: UIImageView!
+    var minutelyWeather = [String : Any]()
+    
     func getWeather(info: [String : Any]) {
-        print(MyJSONPaser.sharedInstance.getByQuery(query: "weather.minutely", JSONDic: info))
+        let weather = MyJSONPaser.sharedInstance.getByQuery(query: "weather.minutely", JSONDic: info)
+        if let minutely = weather as? Array<[String:Any]> {
+            setBackgroundImage(info: minutely[0])
+            setTopInformation(info: minutely[0])
+            tableview.reloadData()
+        }
     }
+    
+    func setBackgroundImage(info:[String:Any]) {
+        if let skyCode = MyJSONPaser.sharedInstance.getByQuery(query: "sky.code", JSONDic: info) as? String {
+            backgroundImage.image = UIImage(named: WeatherInfo().getSkyImageName(name: skyCode))
+            backgroundImage.alpha = 0.8
+        }
+    }
+    
+    func setTopInformation(info:[String:Any]) {
+        if let nowTemperature = MyJSONPaser.sharedInstance.getByQuery(query: WeatherInfo().querys["temperature.tc"]!, JSONDic: info) as? String,
+            let skyCode = MyJSONPaser.sharedInstance.getByQuery(query: "sky.code", JSONDic: info) as? String {
+            area.text = selectArea
+            sky.text = WeatherInfo().getSkyState(code: skyCode)
+            temparature.text = nowTemperature
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -42,7 +75,6 @@ class WeatherViewController: UIViewController, WeatherManagerDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
-        
         return cell
     }
     

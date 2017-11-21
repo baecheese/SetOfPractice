@@ -18,4 +18,56 @@ extension Array {
         }
         return newArr
     }
+    
 }
+
+extension String {
+    func extract(from:Int, to:Int) -> String {
+        let chars = Array(self)
+        var newStr = ""
+        for index in from...to {
+            newStr += String(chars[index])
+        }
+        return newStr
+    }
+    
+    func except(from:Int, to:Int) -> String {
+        let chars = Array(self)
+        var newStr = ""
+        var current = 0
+        for char in chars {
+            if current < from || to < current {
+                newStr += String(char)
+            }
+            current += 1
+        }
+        return newStr
+    }
+    
+    func split(endOfPart:Int...) -> [String] {
+        var parts = endOfPart
+        if endOfPart.last != self.count - 1 {
+            parts.append(self.count - 1)
+        }
+        var result = [String]()
+        var start = 0
+        for end in parts {
+            result.append(extract(from: start, to: end))
+            start = end + 1
+        }
+        return result
+    }
+    
+    func read(index:Int) -> Character? {
+        var current = 0
+        for char in self {
+            if current == index {
+                return char
+            }
+            current += 1
+        }
+        return nil
+    }
+    
+}
+

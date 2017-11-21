@@ -9,18 +9,10 @@
 import Foundation
 
 struct CityInfo {
-    private let citys = ["서울 강남구 도곡동", "부산", "인천", "대구"]
-    private let cityParameters = [["version" : "1", "city" : "서울", "county" : "강남구", "village" : "도곡동"],
+    let citys = ["서울 강남구 도곡동", "부산", "인천", "대구"]
+    let cityParameters = [["version" : "1", "city" : "서울", "county" : "강남구", "village" : "도곡동"],
                           ["version" : "1", "city" : "서울", "county" : "강남구", "village" : "도곡동"],
                           ["version" : "1", "city" : "서울", "county" : "강남구", "village" : "도곡동"],
                           ["version" : "1", "city" : "서울", "county" : "강남구", "village" : "도곡동"]]
-    
-    func getAllCitys() -> [String] {
-        return citys
-    }
-    
-    func getParameter(index:Int) -> [String:String] {
-        return cityParameters[index]
-    }
     
 }
